@@ -1,18 +1,18 @@
 #include <stdio.h>
 #include <string.h>
 #include <readline/readline.h>
+#include <stdbool.h>
 
 int main()
 {
-        char *inpt;
-        int i = 0;
-        while ( i < 10 )
-        {
-        	inpt = readline("Enter text: ");
-        	printf("%s", inpt);
-			printf("\n");
-			++i;
-        }
-        return 0;
+	char *inpt;
+	bool running = true;
+	while (running)
+	{
+		inpt = readline("PMan: > ");
+		printf("%s", inpt);
+		printf("\n");
+	}
+	return 0;
 }
 
