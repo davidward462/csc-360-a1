@@ -3,7 +3,7 @@
 #include <readline/readline.h>
 #include <stdbool.h>
 
-#define TOKEN_LEN 20
+#define MAX_TOKENS 10
 
 // bg
 
@@ -22,19 +22,30 @@ int main()
 	char *input; // from user
 	const char *delimeter = " ";
 	char *token;
-	char *tokenList[5][TOKEN_LEN];
+	char *tokenList[MAX_TOKENS]; // array of pointers
+	int tokenCount = 0;
 	//char *tokenList[20];
 
 	while(1)
 	{
+		// read input
 		input = readline("PMan: > ");
+		if (input == NULL)
+		{
+			break;
+		}
 
-		printf("%s", input); // print input for debugging
-		token = strtok(input, delimeter); //
+		// tokenize input
+		for (token = strtok(input, delimeter); token && tokenCount < MAX_TOKENS; token = strtok(NULL, delimeter))
+		{
+			tokenList[tokenCount++] = token; // store in list
+		}
 
-		strncpy(*tokenList[0], token, TOKEN_LEN);
-		
-		printf("%s", *tokenList[0]);
+		// print list
+		for(int i = 0; i < tokenCount; ++i)
+		{
+			printf("[%d]: %s\n", i, tokenList[i]);
+		}
 	}
 	
 	return 0;
