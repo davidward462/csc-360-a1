@@ -9,16 +9,40 @@
 #define MAX_CMD_LEN 80
 
 // bg
+void bg()
+{
+	printf("\trun bg\n");
+}
 
 // bglist
+void bglist()
+{
+	printf("\trun bglist\n");
+} 
 
 // bgkill
+void bgkill()
+{
+	printf("\trun bgkill\n");
+}
 
 // bgstop
+void bgstop()
+{
+	printf("\trun bgstop\n");
+}
 
 // bgstart
+void bgstart()
+{
+	printf("\trun bgstart\n");
+}
 
 // pstat
+void pstat()
+{
+	printf("\trun pstat\n");
+}
 
 int main()
 {
@@ -29,13 +53,13 @@ int main()
 	int tokenCount = 0;
 
 	// commands
-	const char *bg = "bg";
-	const char *bglist = "bglist";
-	const char *bgkill = "bgkill";
-	const char *bgstop = "bgstop";
-	const char *bgstart = "bgstart";
-	const char *pstat = "pstat";
-	const char *quit = "quit";
+	const char *str_bg = "bg";
+	const char *str_bglist = "bglist";
+	const char *str_bgkill = "bgkill";
+	const char *str_bgstop = "bgstop";
+	const char *str_bgstart = "bgstart";
+	const char *str_pstat = "pstat";
+	const char *str_quit = "quit";
 
 	
 	while(1)
@@ -51,13 +75,41 @@ int main()
 		for (token = strtok(input, delimeter); token && tokenCount < MAX_TOKENS; token = strtok(NULL, delimeter))
 		{
 			tokenList[tokenCount++] = token; // store in list
-		}
-
+		}		
 		// check command
-		if(strncmp(tokenList[0], quit, MAX_CMD_LEN) == 0)
+		if(strncmp(tokenList[0], str_quit, MAX_CMD_LEN) == 0) // quit
 		{
 			exit(EXIT_SUCCESS);	
 		}
+		else if(strncmp(tokenList[0], str_bg, MAX_CMD_LEN) == 0) // bg
+		{
+			bg();
+		}
+		else if(strncmp(tokenList[0], str_bglist, MAX_CMD_LEN) == 0) // bglist
+		{
+			bglist();
+		}
+		else if(strncmp(tokenList[0], str_bgkill, MAX_CMD_LEN) == 0) // bgkill
+		{
+			bgkill();
+		}
+		else if(strncmp(tokenList[0], str_bgstop, MAX_CMD_LEN) == 0) // bgstop
+		{
+			bgstop();
+		}
+		else if(strncmp(tokenList[0], str_bgstart, MAX_CMD_LEN) == 0) // bgstop
+		{
+			bgstart();
+		}
+		else if(strncmp(tokenList[0], str_pstat, MAX_CMD_LEN) == 0) // bgstop
+		{
+			pstat();
+		}
+		else
+		{
+			printf("command not recognized.\n");
+		}
+
 
 		// print list
 		for(int i = 0; i < tokenCount; ++i)
