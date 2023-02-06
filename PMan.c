@@ -7,7 +7,6 @@
 
 // files needed for linked list
 #include "linkedlist.h"
-#include "linkedlist.c"
 
 #define MAX_TOKENS 10
 #define MAX_CMD_LEN 80
