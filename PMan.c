@@ -1,9 +1,13 @@
 #include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <string.h>
-#include <readline/readline.h>
-#include <stdbool.h>
+#include <unistd.h>             
+#include <stdlib.h>             //exit(), etc 
+#include <string.h>             // strok(), etc
+#include <readline/readline.h>  // getting user input
+#include <stdbool.h>            // boolean types
+
+// files needed for linked list
+#include "linkedlist.h"
+#include "linkedlist.c"
 
 #define MAX_TOKENS 10
 #define MAX_CMD_LEN 80

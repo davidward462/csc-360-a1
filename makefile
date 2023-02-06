@@ -1,2 +1,14 @@
-pman: PMan.c
-	gcc -Wall PMan.c -o pman -lreadline
+#David Ward
+#V00920409
+#CSC 360 A1
+
+# variables
+COMPILER=gcc
+OPTIONS=-g
+COMPILE=$(COMPILER) $(OPTIONS)
+BUILD=build
+PROGRAM=pman
+
+
+
+
