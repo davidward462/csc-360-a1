@@ -73,7 +73,7 @@ int main()
 	const char *str_bgstop = "bgstop";
 	const char *str_bgstart = "bgstart";
 	const char *str_pstat = "pstat";
-	const char *str_quit = "quit";
+	const char *str_exit = "exit";
 	
     checklink(); // remove later
 
@@ -92,7 +92,7 @@ int main()
 			tokenList[tokenCount++] = token; // store in list
 		}		
 		// check command
-		if(strncmp(tokenList[0], str_quit, MAX_CMD_LEN) == 0) // quit
+		if(strncmp(tokenList[0], str_exit, MAX_CMD_LEN) == 0) // exit
 		{
 			exit(EXIT_SUCCESS);	
 		}
