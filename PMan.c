@@ -4,12 +4,23 @@
 #include <string.h>             // strok(), etc
 #include <readline/readline.h>  // getting user input
 #include <stdbool.h>            // boolean types
+#include <sys/types.h>
 
 // files needed for linked list
 #include "linkedlist.h"
 
 #define MAX_TOKENS 10
 #define MAX_CMD_LEN 80
+
+// ---- functions just for testing ----
+// remove later
+
+bool IsNullTerminated(char* s)
+{
+    return false;
+}
+
+// ------------------------------
 
 // bg
 void bg()
@@ -63,8 +74,9 @@ int main()
 	const char *str_bgstart = "bgstart";
 	const char *str_pstat = "pstat";
 	const char *str_quit = "quit";
-
 	
+    checklink(); // remove later
+
 	while(1)
 	{
 		// read input

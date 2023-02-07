@@ -1,6 +1,12 @@
 #ifndef LINKEDLIST_H
 #define LINKEDLIST_H
 
-void checklink();
+typedef struct node node;
+
+void checklink(); // remove later
+
+node CreateNewList();
+
+
 
 #endif
