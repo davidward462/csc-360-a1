@@ -79,7 +79,10 @@ int main()
     // process management
     pid_t thisPid = getpid();
     // create linked list to hold process IDs
-    struct node *head = malloc(sizeof(struct node));
+    struct node *head;
+    //struct node *head = malloc(sizeof(struct node));
+    //head = malloc(sizeof(struct node));
+
     head = CreateListHead(thisPid);
 
 	while(1)
