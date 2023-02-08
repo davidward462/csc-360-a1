@@ -60,6 +60,7 @@ void pstat()
 
 int main()
 {
+    // input setup
 	char *input; // from user
 	const char *delimeter = " ";
 	char *token;
@@ -76,6 +77,11 @@ int main()
 	const char *str_exit = "exit";
 	
     checklink(); // remove later
+
+    // process management
+    pid_t thisPid = getpid();
+    // create linked list to hold process IDs
+    struct node *head = CreateListHead(thisPid);
 
 	while(1)
 	{
