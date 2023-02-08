@@ -2,22 +2,11 @@
 #V00920409
 #CSC 360 A1
 
-# variables
-COMPILER=gcc
-OPTIONS=-g
-COMPILE=$(COMPILER) $(OPTIONS)
-BUILD=build
-PROGRAM=pman
-all: program
+args: args.o
+	gcc -o args args.o
 
-program: PMan.c $(BUILD)/linkedlist.o
-	$(COMPILE) $< $(BUILD)/*.o -o $(PROGRAM) -lreadline
-
-$(BUILD)/linkedlist.o: linkedlist.c linkedlist.h build
-	$(COMPILE) -c $< -o $@
-
-build:
-	mkdir -p $(BUILD)
+args.o: args.c
+	gcc -c args.c
 
 clean:
-	rm -rf $(BUILD) program *.bak
+	rm args.o

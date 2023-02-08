@@ -7,11 +7,6 @@ struct node {
     struct node *next;
 };
 
-void checklink()
-{
-    printf("linkedlist.c is linked\n");
-}
-
 struct node* CreateListHead(pid_t pid)
 {
     // create struct for head

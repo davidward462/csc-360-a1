@@ -75,8 +75,6 @@ int main()
 	const char *str_bgstart = "bgstart";
 	const char *str_pstat = "pstat";
 	const char *str_exit = "exit";
-	
-    checklink(); // remove later
 
     // process management
     pid_t thisPid = getpid();

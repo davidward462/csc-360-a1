@@ -3,8 +3,6 @@
 
 //typedef struct node node;
 
-void checklink(); // remove later
-
 struct node* CreateListHead(pid_t pid);
 
 struct node AddFront(pid_t pid);
