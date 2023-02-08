@@ -10,10 +10,11 @@ struct node {
 struct node* CreateListHead(pid_t pid)
 {
     // create struct for head
+    struct node head = {pid, NULL};
     // allocate memory with malloc somehow
     // assign data
     // return address to this new struct called head
 
-    return NULL;
+    return &head;
 }
 
