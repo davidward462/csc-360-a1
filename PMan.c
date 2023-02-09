@@ -12,20 +12,16 @@
 #define MAX_TOKENS 10
 #define MAX_CMD_LEN 80
 
-// ---- functions just for testing ----
-// remove later
-
-bool IsNullTerminated(char* s)
-{
-    return false;
-}
-
-// ------------------------------
-
 // bg
-void bg()
+void bg(struct node *head)
 {
+    // --- temporary ---
 	printf("\trun bg\n");
+    pid_t pid = getpid();
+    
+    AddFront(head, pid);
+    PrintList(head);
+    // ----------------
 }
 
 // bglist
@@ -87,9 +83,9 @@ int main()
 
     PrintList(head);
 
+    printf("BEGIN\n\n");
 	while(1)
 	{
-        printf("BEGIN\n\n");
 		// read input
 		input = readline("PMan: > ");
 		if (input == NULL)
@@ -109,7 +105,7 @@ int main()
 		}
 		else if(strncmp(tokenList[0], str_bg, MAX_CMD_LEN) == 0) // bg
 		{
-			bg();
+			bg(head);
 		}
 		else if(strncmp(tokenList[0], str_bglist, MAX_CMD_LEN) == 0) // bglist
 		{
