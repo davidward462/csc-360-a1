@@ -7,6 +7,8 @@ struct node
     struct node *next;
 };
 
+void PrintList(struct node *head);
+
 struct node* CreateListHead(pid_t pid);
 
 struct node AddFront(pid_t pid);

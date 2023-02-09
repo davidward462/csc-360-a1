@@ -85,8 +85,11 @@ int main()
 
     head = CreateListHead(thisPid);
 
+    PrintList(head);
+
 	while(1)
 	{
+        printf("BEGIN\n\n");
 		// read input
 		input = readline("PMan: > ");
 		if (input == NULL)

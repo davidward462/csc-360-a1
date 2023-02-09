@@ -10,6 +10,21 @@ struct node {
 };
 **/
 
+void PrintList(struct node *head)
+{
+    printf("head->");
+    struct node *current = head;
+    while(current->next !=NULL)
+    {
+        printf("n->");
+        current = current->next;
+    }
+    if(current->next == NULL)
+    {
+        printf("NULL\n");
+    }
+}
+
 struct node* CreateListHead(pid_t pid)
 {
     //struct node head = {pid, NULL};
