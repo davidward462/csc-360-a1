@@ -24,8 +24,10 @@ void bg(struct node *head, char *args[]) // TODO: pass other arguments the user 
     pid_t pidtemp = getpid();
     // -------------
 
-    char *command = args[0];
-    char *list[] = {args[1], args[2], args[3], args[4]};
+    char *command = args[1];
+    char *list[] = {args[2], args[3], args[4], NULL};
+
+    printf("\tcommand = %s\n\tlist[0] = %s\n", command, list[0]);
 
     // create background process
     pid_t pid = execvp(command, list);
@@ -88,7 +90,7 @@ int main()
 	char *input; // from user
 	const char *delimeter = " ";
 	char *token;
-	char *tokenList[MAX_TOKENS]; // array of pointers
+	char *tokenList[MAX_TOKENS] = {"",}; // initialize with empty string
 	int tokenCount = 0;
 
 	// commands
@@ -156,12 +158,11 @@ int main()
         else if((StrMatch(tokenList[0], "")) || (StrMatch(tokenList[0], " ")) || (StrMatch(tokenList[0], "\n")))
         {
             ; // do nothing
-            // TODO: does not run on the first enter press
         }
 		else
 		{   
             // not a known command, the empty string, or newline
-            printf("command not recognized.\n");
+            printf("%s: command not recognized.\n", tokenList[0]);
 		}
 
 		//clear token list
