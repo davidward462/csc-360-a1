@@ -19,7 +19,7 @@ void bg(struct node *head)
 	printf("\trun bg\n");
     pid_t pid = getpid();
     
-    AddFront(head, pid);
+    head = AddFront(head, pid);
     PrintList(head);
     // ----------------
 }
@@ -79,7 +79,7 @@ int main()
     //struct node *head = malloc(sizeof(struct node));
     //head = malloc(sizeof(struct node));
 
-    head = CreateListHead(thisPid);
+    head = CreateEmptyList();
 
     PrintList(head);
 
@@ -132,12 +132,13 @@ int main()
 			printf("command not recognized.\n");
 		}
 
-
+        /**
 		// print list
 		for(int i = 0; i < tokenCount; ++i)
 		{
 			printf("\t[%d]: %s\n", i, tokenList[i]);
 		}
+        **/
 
 		//clear token list
 		for(int i = 0; i < MAX_TOKENS; i++)

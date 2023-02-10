@@ -9,7 +9,9 @@ struct node
 
 void PrintList(struct node *head);
 
-struct node* CreateListHead(pid_t pid);
+struct node* CreateList(pid_t pid);
+
+struct node* CreateEmptyList();
 
 struct node* AddFront(struct node *head, pid_t pid);
 

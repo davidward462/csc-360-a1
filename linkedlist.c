@@ -7,20 +7,23 @@ void PrintList(struct node *head)
 {
     printf("head->");
     struct node *current = head; // address of current node
-    while(current->next !=NULL) // there are other nodes in the list
+    while(current !=NULL) // there are other nodes in the list
     {
-        printf("n->");
+        //printf("n->");
+        printf("%d->", current->pid);
         current = current->next; // increment
     }
-    if(current->next == NULL) // if there isn't a next
+
+    if(current == NULL)
     {
         printf("NULL\n");
     }
 }
 
+// create linked list with one node
 // params: process id
 // returns: address of head of new list
-struct node* CreateListHead(pid_t pid)
+struct node* CreateList(pid_t pid)
 {
     struct node *head; // declare 
 
@@ -34,10 +37,22 @@ struct node* CreateListHead(pid_t pid)
     return head; // address to a struct
 }
 
+
+// create linked list with no nodes
+struct node* CreateEmptyList()
+{
+    struct node *head;
+    head = NULL;
+    return head;
+}
+
 // params: process id, address of head of list
 struct node* AddFront(struct node *head, pid_t pid)
 {
-    struct node *listNext = head->next;
+    printf("add front\n");
+
+    // head is not a node, its a pointer to the fist node
+    struct node *listNext = head;
 
     struct node *n; // declare node to be inserted
 
@@ -48,6 +63,8 @@ struct node* AddFront(struct node *head, pid_t pid)
     n->pid = pid;
     n->next = listNext;
 
-    return n;
+    head = n;
+
+    return head; // head of list is updated
 }
 
