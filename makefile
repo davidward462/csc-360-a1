@@ -4,14 +4,17 @@
 
 all: pman args inf
 
-pman: PMan.o linkedlist.o
-	gcc -o pman  PMan.o linkedlist.o -lreadline
+pman: PMan.o linkedlist.o commands.o
+	gcc -o pman  PMan.o linkedlist.o commands.o -lreadline
 
 PMan.o: PMan.c linkedlist.h
 	gcc -c PMan.c 
 
 linkedlist.o: linkedlist.c linkedlist.h
 	gcc -c linkedlist.c
+
+commands.o: commands.c commands.h
+	gcc -c commands.c
 
 args: args.o
 	gcc -o args args.o
@@ -26,4 +29,4 @@ inf.o: inf.c
 	gcc -c inf.c
 
 clean:
-	rm args.o inf.o linkedlist.o PMan.o
+	rm args.o inf.o linkedlist.o commands.o PMan.o
