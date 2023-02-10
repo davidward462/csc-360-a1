@@ -5,9 +5,7 @@
 #include <readline/readline.h>  // getting user input
 #include <stdbool.h>            // boolean types
 #include <sys/types.h>
-
 #include "linkedlist.h"
-#include "commands.h"
 
 // preprocessor definitions
 #define MAX_TOKENS 10
