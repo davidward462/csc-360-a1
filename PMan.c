@@ -11,23 +11,27 @@
 #define MAX_TOKENS 10
 #define MAX_CMD_LEN 80
 
+void run(char *args[])
+{
+    pid_t pid = execvp(args[1], args);
+}
+
 // bg
 // Create background process
-void bg(struct node *head, char *cmd) // TODO: pass other arguments the user may have entered
+void bg(struct node *head, char *args[]) // TODO: pass other arguments the user may have entered
 {
     // --- temporary ---
-	printf("\trun bg\n");
-    pid_t pid = getpid();
-    pid_t k = 55;
+    pid_t pidtemp = getpid();
     // -------------
-   
+
+    char *command = args[0];
+    char *list[] = {args[1], args[2], args[3], args[4]};
+
     // create background process
-    // execpv
+    pid_t pid = execvp(command, list);
 
 
-    head = AddFront(head, pid);
-    // ----------------
- 
+    //head = AddFront(head, pid);
     
 }
 
@@ -50,7 +54,7 @@ bool StrMatch(char *a, const char *b)
 void bglist(struct node *head)
 {
     // temporary
-	printf("\trun bglist\n");
+    printf("\trun bglist\n");
     PrintList(head);
 } 
 
@@ -127,7 +131,7 @@ int main()
 		}
 		else if(StrMatch(tokenList[0], str_bg)) // bg
 		{
-			bg(head, tokenList[0]);
+			bg(head, tokenList);
 		}
 		else if(StrMatch(tokenList[0], str_bglist)) // bglist
 		{
