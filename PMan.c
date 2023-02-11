@@ -11,9 +11,12 @@
 #define MAX_TOKENS 10
 #define MAX_CMD_LEN 80
 
-void run(char *args[])
+// for testing
+void run()
 {
-    pid_t pid = execvp(args[1], args);
+    const char *a = "";
+    char *list[] = {"", NULL};
+    pid_t pid = execvp("ls", list);
 }
 
 // bg
@@ -133,7 +136,8 @@ int main()
 		}
 		else if(StrMatch(tokenList[0], str_bg)) // bg
 		{
-			bg(head, tokenList);
+			//bg(head, tokenList);
+            run();
 		}
 		else if(StrMatch(tokenList[0], str_bglist)) // bglist
 		{
