@@ -13,7 +13,7 @@ PMan.o: PMan.c linkedlist.h
 linkedlist.o: linkedlist.c linkedlist.h
 	gcc -c linkedlist.c
 
-commands.o: commands.c commands.h
+commands.o: commands.c commands.h linkedlist.h
 	gcc -c commands.c
 
 helper.o: helper.c helper.h
