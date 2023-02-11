@@ -19,27 +19,6 @@ void run()
     pid_t pid = execvp("ls", list);
 }
 
-// bg
-// Create background process
-void bg(struct node *head, char *args[]) // TODO: pass other arguments the user may have entered
-{
-    // --- temporary ---
-    pid_t pidtemp = getpid();
-    // -------------
-
-    char *command = args[1];
-    char *list[] = {args[2], args[3], args[4], NULL};
-
-    printf("\tcommand = %s\n\tlist[0] = %s\n", command, list[0]);
-
-    // create background process
-    pid_t pid = execvp(command, list);
-
-
-    //head = AddFront(head, pid);
-    
-}
-
 // return true if the strings match, false otherwise.
 bool StrMatch(char *a, const char *b)
 {
@@ -53,6 +32,22 @@ bool StrMatch(char *a, const char *b)
     {
         return false;
     }
+}
+
+// bg
+// Create background process
+void bg(struct node *head, char *args[]) // TODO: pass other arguments the user may have entered
+{
+    char *command = args[1];
+    char *list[] = {args[2], NULL};
+
+    printf("\tcommand = %s\n\tlist[0] = %s\n", command, list[0]);
+
+    // create background process
+    pid_t pid = execvp(command, list);
+
+    head = AddFront(head, pid);
+    
 }
 
 // bglist
@@ -136,8 +131,8 @@ int main()
 		}
 		else if(StrMatch(tokenList[0], str_bg)) // bg
 		{
-			//bg(head, tokenList);
-            run();
+			bg(head, tokenList);
+            //run();
 		}
 		else if(StrMatch(tokenList[0], str_bglist)) // bglist
 		{
