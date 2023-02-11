@@ -17,9 +17,10 @@
 // Create background process
 void bg(struct node *head, char *args[]) // TODO: pass other arguments the user may have entered
 {
-    char *command = args[1];
-    char *list[] = {args[2], NULL};
+    char *command = args[1]; // token after 'bg'
+    char *list[] = {args[2], NULL}; // rest of the arguments
 
+    // for debugging
     printf("\tcommand = %s\n\tlist[0] = %s\n", command, list[0]);
 
     // create background process

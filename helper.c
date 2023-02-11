@@ -7,8 +7,7 @@
 
 void run()
 {
-    const char *a = "";
-    char *list[] = {"", NULL};
+    char *list[] = {NULL};
     pid_t pid = execvp("ls", list);
 }
 
