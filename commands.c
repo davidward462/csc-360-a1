@@ -7,6 +7,8 @@
 #include "linkedlist.h"
 #include "helper.h"
 
+struct node *head;
+
 // bg
 // Create background process
 void bg(struct node *head, char *args[]) // TODO: pass other arguments the user may have entered
