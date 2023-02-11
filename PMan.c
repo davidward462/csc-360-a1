@@ -5,12 +5,15 @@
 #include <readline/readline.h>  // getting user input
 #include <stdbool.h>            // boolean types
 #include <sys/types.h>
+
 #include "linkedlist.h"
+#include "helper.h"
 
 // preprocessor definitions
 #define MAX_TOKENS 10
 #define MAX_CMD_LEN 80
 
+/**
 // for testing
 void run()
 {
@@ -18,7 +21,9 @@ void run()
     char *list[] = {"", NULL};
     pid_t pid = execvp("ls", list);
 }
+**/
 
+/**
 // return true if the strings match, false otherwise.
 bool StrMatch(char *a, const char *b)
 {
@@ -33,6 +38,7 @@ bool StrMatch(char *a, const char *b)
         return false;
     }
 }
+**/
 
 // bg
 // Create background process
@@ -125,36 +131,36 @@ int main()
 			tokenList[tokenCount++] = token; // store in list
 		}		
 		// check command
-		if(StrMatch(tokenList[0], str_exit))
+		if(StrMatch(tokenList[0], str_exit, MAX_CMD_LEN))
 		{
 			exit(EXIT_SUCCESS);	
 		}
-		else if(StrMatch(tokenList[0], str_bg)) // bg
+		else if(StrMatch(tokenList[0], str_bg, MAX_CMD_LEN)) // bg
 		{
 			bg(head, tokenList);
             //run();
 		}
-		else if(StrMatch(tokenList[0], str_bglist)) // bglist
+		else if(StrMatch(tokenList[0], str_bglist, MAX_CMD_LEN)) // bglist
 		{
 			bglist(head);
 		}
-		else if(StrMatch(tokenList[0], str_bgkill)) // bgkill
+		else if(StrMatch(tokenList[0], str_bgkill, MAX_CMD_LEN)) // bgkill
 		{
 			bgkill();
 		}
-		else if(StrMatch(tokenList[0], str_bgstop)) // bgstop
+		else if(StrMatch(tokenList[0], str_bgstop, MAX_CMD_LEN)) // bgstop
 		{
 			bgstop();
 		}
-		else if(StrMatch(tokenList[0], str_bgstart)) // bgstop
+		else if(StrMatch(tokenList[0], str_bgstart, MAX_CMD_LEN)) // bgstop
 		{
 			bgstart();
 		}
-		else if(StrMatch(tokenList[0], str_pstat))// bgstop
+		else if(StrMatch(tokenList[0], str_pstat, MAX_CMD_LEN))// bgstop
 		{
 			pstat();
 		}
-        else if((StrMatch(tokenList[0], "")) || (StrMatch(tokenList[0], " ")) || (StrMatch(tokenList[0], "\n")))
+        else if((StrMatch(tokenList[0], "", MAX_CMD_LEN)) || (StrMatch(tokenList[0], " ", MAX_CMD_LEN)) || (StrMatch(tokenList[0], "\n", MAX_CMD_LEN)))
         {
             ; // do nothing
         }

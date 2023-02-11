@@ -17,6 +17,4 @@ struct node* AddFront(struct node *head, pid_t pid);
 
 struct node RemoveNode(pid_t pid);
 
-
-
 #endif
