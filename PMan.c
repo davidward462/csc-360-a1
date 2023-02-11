@@ -6,9 +6,9 @@
 #include <readline/readline.h>  // getting user input
 #include <sys/types.h>
 
-#include "linkedlist.h"
-#include "helper.h"
-#include "commands.h"
+#include "linkedlist.h" // linked list
+#include "helper.h"     // misc and debugging
+#include "commands.h"   // bg, bglist, etc
 
 // preprocessor definitions
 #define MAX_TOKENS 10
@@ -63,6 +63,7 @@ int main()
 		}
 		else if(StrMatch(tokenList[0], str_bg, MAX_CMD_LEN)) // bg
 		{
+            PrintCharArray(tokenList, MAX_TOKENS); 
 			bg(head, tokenList);
             //run();
 		}

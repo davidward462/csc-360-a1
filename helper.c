@@ -10,6 +10,15 @@ void run()
     pid_t pid = execvp("ls", list);
 }
 
+void PrintCharArray(char *a[], int length)
+{
+    for(int i = 0; i < length; i++)
+    {
+        printf("%s ", a[i]); // can cause indexOutOfBounds error 
+    }
+    printf("\n");
+}
+
 int StrMatch(char *a, const char *b, int length)
 {
     int compare;
