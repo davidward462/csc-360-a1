@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <sys/wait.h>
 #include <unistd.h>             
 #include <stdlib.h>             //exit(), etc 
 #include <string.h>             // strok(), etc
@@ -20,13 +21,23 @@ void bg(struct node *head, char *args[]) // TODO: pass other arguments the user 
     char *command = args[1]; // token after 'bg'
     char *list[] = {args[2], NULL}; // rest of the arguments
 
-    // for debugging
-    printf("\tcommand = %s\n\tlist[0] = %s\n", command, list[0]);
-
     // create background process
     pid_t pid = execvp(command, list);
+    printf("execvp() = %d", pid);
+    
+    pid_t pid_fork = fork(); // create child process
+    if(pid < 0) // fork failed
+    {
+        printf("error: fork failed\n");
+    }
 
-    head = AddFront(head, pid);
+    if(pid != 0) // parent process
+    {
+        // might use different arguments later
+        waitpid(-1, NULL, WNOHANG); // wait for child to terminate
+    }
+
+    head = AddFront(head, pid); // where should this go?
     
 }
 
@@ -86,7 +97,7 @@ int main()
     // create linked list to hold process IDs
     struct node *head;
 
-    head = CreateEmptyList();
+    head = CreateEmptyList(); // TODO: sort out list management 
 
     PrintList(head);
 
