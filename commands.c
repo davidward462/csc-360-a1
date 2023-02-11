@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <sys/types.h>
 #include "commands.h"
+#include "linkedlist.h"
 
 // bg
 // Create background process
