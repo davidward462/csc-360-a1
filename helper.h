@@ -3,6 +3,6 @@
 
 void run();
 
-bool StrMatch(char *a, const char *b, int length);
+int StrMatch(char *a, const char *b, int length);
 
 #endif

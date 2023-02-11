@@ -4,7 +4,6 @@
 #include <stdlib.h>             //exit(), etc 
 #include <string.h>             // strok(), etc
 #include <readline/readline.h>  // getting user input
-#include <stdbool.h>            // boolean types
 #include <sys/types.h>
 
 #include "linkedlist.h"
