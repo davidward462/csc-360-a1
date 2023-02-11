@@ -19,6 +19,7 @@
 void bg(struct node *head, char *args[]) // TODO: pass other arguments the user may have entered
 {
     char *command = args[1]; // token after 'bg'
+    printf("command:%s|<-", command); //for testing
     if(StrMatch(command, "", MAX_CMD_LEN)) // TODO: fix seg fault on entry "bg "
     {
        printf("error: please provide a command\n");
@@ -51,8 +52,8 @@ void bg(struct node *head, char *args[]) // TODO: pass other arguments the user 
 void bglist(struct node *head)
 {
     // temporary
-    printf("\trun bglist\n");
     PrintList(head);
+    //struct node *current = head;
 } 
 
 // bgkill
@@ -85,7 +86,7 @@ int main()
 	char *input; // from user
 	const char *delimeter = " ";
 	char *token;
-	char *tokenList[MAX_TOKENS] = {"",}; // initialize with empty string
+	char *tokenList[MAX_TOKENS] = {"",}; // initialize with empty strings
 	int tokenCount = 0;
 
 	// commands
@@ -97,21 +98,21 @@ int main()
 	const char *str_pstat = "pstat";
 	const char *str_exit = "exit";
 
-    // process management
-    pid_t thisPid = getpid();
+    // root process for pman
+    pid_t pmanPid = getpid();
     
     // create linked list to hold process IDs
     struct node *head;
+    head = CreateEmptyList();
+    head = AddFront(head, pmanPid); // add root process
 
-    head = CreateEmptyList(); // TODO: sort out list management 
-
-    PrintList(head);
-
+    // Main loop
 	while(1)
 	{
 		// read input
 		input = readline("PMan: > ");
-		if (input == NULL)
+		
+        if (input == NULL)
 		{
 			break;
 		}
@@ -157,7 +158,7 @@ int main()
         }
 		else
 		{   
-            // not a known command, the empty string, or newline
+            // not a known command, empty string, spance, or newline
             printf("%s: command not recognized.\n", tokenList[0]);
 		}
 
@@ -166,8 +167,6 @@ int main()
 		{
 			tokenList[i] = "";
 		}
-
-		// reset token list
 		tokenCount = 0; 
 		
 	}

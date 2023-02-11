@@ -3,20 +3,24 @@
 #include <sys/types.h>
 #include "linkedlist.h"
 
+int ListLength(struct node *head)
+{
+    return 0;
+}
+
 void PrintList(struct node *head)
 {
-    printf("head->");
+    printf("----------\nhead\n");
     struct node *current = head; // address of current node
     while(current !=NULL) // there are other nodes in the list
     {
-        //printf("n->");
-        printf("%d->", current->pid);
+        printf("%d\n", current->pid);
         current = current->next; // increment
     }
 
     if(current == NULL)
     {
-        printf("NULL\n");
+        printf("NULL\n----------\n");
     }
 }
 
@@ -36,7 +40,6 @@ struct node* CreateList(pid_t pid)
 
     return head; // address to a struct
 }
-
 
 // create linked list with no nodes
 struct node* CreateEmptyList()

@@ -29,4 +29,4 @@ inf.o: inf.c
 	gcc -c inf.c
 
 clean:
-	rm args.o inf.o linkedlist.o PMan.o
+	rm args.o inf.o linkedlist.o PMan.o helper.o

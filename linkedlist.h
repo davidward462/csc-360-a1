@@ -7,6 +7,8 @@ struct node
     struct node *next;
 };
 
+int ListLength(struct node *head);
+
 void PrintList(struct node *head);
 
 struct node* CreateList(pid_t pid);
