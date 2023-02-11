@@ -3,9 +3,9 @@
 #include <unistd.h>             
 #include <stdlib.h>
 #include <sys/types.h>
-#include "commands.h"
 #include "linkedlist.h"
 #include "helper.h"
+#include "commands.h"
 
 struct node *head;
 
