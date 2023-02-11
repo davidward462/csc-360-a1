@@ -7,7 +7,7 @@ all: pman args inf
 pman: PMan.o linkedlist.o helper.o commands.o
 	gcc -o pman  PMan.o linkedlist.o helper.o commands.o -lreadline
 
-PMan.o: PMan.c linkedlist.h commands.h
+PMan.o: PMan.c linkedlist.h helper.h commands.h
 	gcc -c PMan.c 
 
 linkedlist.o: linkedlist.c linkedlist.h
