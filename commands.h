@@ -1,5 +1,5 @@
-#ifndef LINKEDLIST_H
-#define LINKEDLIST_H
+#ifndef COMMANDS_H
+#define COMMANDS_H
 
 struct node *head;
 
