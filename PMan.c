@@ -19,7 +19,7 @@
 void bg(struct node *head, char *args[]) // TODO: pass other arguments the user may have entered
 {
     char *command = args[1]; // token after 'bg'
-    if(StrMatch(command, "", MAX_CMD_LEN))
+    if(StrMatch(command, "", MAX_CMD_LEN)) // TODO: fix seg fault on entry "bg "
     {
        printf("error: please provide a command\n");
        return;
