@@ -19,6 +19,11 @@
 void bg(struct node *head, char *args[]) // TODO: pass other arguments the user may have entered
 {
     char *command = args[1]; // token after 'bg'
+    if(StrMatch(command, "", MAX_CMD_LEN))
+    {
+       printf("error: please provide a command\n");
+       return;
+    }
     char *list[] = {args[2], NULL}; // rest of the arguments
 
     // create background process
@@ -29,6 +34,7 @@ void bg(struct node *head, char *args[]) // TODO: pass other arguments the user 
     if(pid < 0) // fork failed
     {
         printf("error: fork failed\n");
+        return;
     }
 
     if(pid != 0) // parent process
