@@ -13,33 +13,6 @@
 #define MAX_TOKENS 10
 #define MAX_CMD_LEN 80
 
-/**
-// for testing
-void run()
-{
-    const char *a = "";
-    char *list[] = {"", NULL};
-    pid_t pid = execvp("ls", list);
-}
-**/
-
-/**
-// return true if the strings match, false otherwise.
-bool StrMatch(char *a, const char *b)
-{
-    int compare;
-    compare = strncmp(a, b, MAX_CMD_LEN);
-    if(compare == 0)
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
-}
-**/
-
 // bg
 // Create background process
 void bg(struct node *head, char *args[]) // TODO: pass other arguments the user may have entered
