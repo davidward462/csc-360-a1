@@ -12,11 +12,12 @@ void run()
 
 void PrintCharArray(char *a[], int length)
 {
+    printf("[");
     for(int i = 0; i < length; i++)
     {
         printf("%s ", a[i]); // can cause indexOutOfBounds error 
     }
-    printf("\n");
+    printf("]\n");
 }
 
 int StrMatch(char *a, const char *b, int length)

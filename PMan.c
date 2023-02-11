@@ -20,8 +20,15 @@ int main()
 	char *input; // from user
 	const char *delimeter = " ";
 	char *token;
-	char *tokenList[MAX_TOKENS] = {"",}; // initialize with empty strings
+	char *tokenList[MAX_TOKENS] = {""};
 	int tokenCount = 0;
+
+    // fill list
+	for(int i = 0; i < MAX_TOKENS; i++)
+	{
+		tokenList[i] = "";
+	}
+	tokenCount = 0; 
 
 	// commands
 	const char *str_bg = "bg";
@@ -97,13 +104,13 @@ int main()
             printf("%s: command not recognized.\n", tokenList[0]);
 		}
 
+		
 		//clear token list
 		for(int i = 0; i < MAX_TOKENS; i++)
 		{
 			tokenList[i] = "";
 		}
 		tokenCount = 0; 
-		
 	}
 	
 	return 0;
