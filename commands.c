@@ -34,12 +34,11 @@ void bg(struct node *head, char *args[]) // TODO: pass other arguments the user 
     {   
         // execute background command
         execvp(command, list);
-        exit();
     }
     else // parent process
     {
         // might use different arguments later
-        waitpid(-1, NULL, 0); // wait for child to terminate
+        waitpid(-1, NULL, WNOHANG); // wait for child to terminate
         //wait(NULL);
     }
 
