@@ -10,17 +10,17 @@ int ListLength(struct node *head)
 
 void PrintList(struct node *head)
 {
-    printf("----------\nhead\n");
+    printf("head-> ");
     struct node *current = head; // address of current node
     while(current !=NULL) // there are other nodes in the list
     {
-        printf("%d\n", current->pid);
+        printf("%d-> ", current->pid);
         current = current->next; // increment
     }
 
     if(current == NULL)
     {
-        printf("NULL\n----------\n");
+        printf("NULL\n");
     }
 }
 
@@ -49,10 +49,9 @@ struct node* CreateEmptyList()
     return head;
 }
 
-// params: process id, address of head of list
 struct node* AddFront(struct node *head, pid_t pid)
 {
-    printf("add front\n");
+    //printf("add front\n");
 
     // head is not a node, its a pointer to the fist node
     struct node *listNext = head;

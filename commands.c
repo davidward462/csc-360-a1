@@ -1,4 +1,4 @@
-    #include <stdio.h>
+#include <stdio.h>
 #include <sys/wait.h>
 #include <unistd.h>             
 #include <stdlib.h>
@@ -30,20 +30,20 @@ void bg(struct node *head, char *args[]) // TODO: pass other arguments the user 
         printf("error: fork failed\n");
         return;
     }   
-    else if(pid_fork == 0) // child process
+    else if(pid_fork == 0) // child process, child gets pid of 0 from fork()
     {   
         // execute background command
         execvp(command, list);
+        head = AddFront(head, pid_fork); // where should this go?
+        //printf("child process:");
+        PrintList(head);
     }
-    else // parent process
+    else // parent process, parent gets child's pid as pid from fork()
     {
         // might use different arguments later
-        waitpid(-1, NULL, WNOHANG); // wait for child to terminate
+        waitpid(pid_fork, NULL, WNOHANG); // wait for child to terminate
         //wait(NULL);
     }
-
-    head = AddFront(head, pid_fork); // where should this go?
-    
 }
 
 // bglist

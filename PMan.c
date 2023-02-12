@@ -18,7 +18,7 @@ int main()
 {
     // input setup
 	char *input; // from user
-	const char *delimeter = " ";
+	const char *delimeter = " \t\r\n\a";
 	char *token;
 	char *tokenList[MAX_TOKENS] = {""};
 	int tokenCount = 0;
@@ -46,6 +46,7 @@ int main()
     struct node *head;
     head = CreateEmptyList();
     head = AddFront(head, pmanPid); // add root process
+    //PrintList(head); // initial print
 
     // Main loop
 	while(1)
@@ -64,11 +65,12 @@ int main()
 			tokenList[tokenCount++] = token; // store in list
 		}
 
-        PrintCharArray(tokenList, MAX_TOKENS); 
+        //PrintCharArray(tokenList, MAX_TOKENS); 
 
 		// check command
 		if(StrMatch(tokenList[0], str_exit, MAX_CMD_LEN))
 		{
+            free(input);
 			exit(EXIT_SUCCESS);	
 		}
 		else if(StrMatch(tokenList[0], str_bg, MAX_CMD_LEN)) // bg
