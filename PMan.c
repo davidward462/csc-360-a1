@@ -62,7 +62,11 @@ int main()
 		for (token = strtok(input, delimeter); token && tokenCount < MAX_TOKENS; token = strtok(NULL, delimeter))
 		{
 			tokenList[tokenCount++] = token; // store in list
-		}		
+		}
+
+
+        PrintCharArray(tokenList, MAX_TOKENS); 
+
 		// check command
 		if(StrMatch(tokenList[0], str_exit, MAX_CMD_LEN))
 		{
@@ -70,7 +74,6 @@ int main()
 		}
 		else if(StrMatch(tokenList[0], str_bg, MAX_CMD_LEN)) // bg
 		{
-            PrintCharArray(tokenList, MAX_TOKENS); 
 			bg(head, tokenList);
             //run();
 		}

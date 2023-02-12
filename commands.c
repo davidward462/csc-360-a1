@@ -14,34 +14,39 @@ struct node *head;
 void bg(struct node *head, char *args[]) // TODO: pass other arguments the user may have entered
 {
     char *command = args[1]; // token after 'bg'
-    printf("command:%s|<-", command); //for testing
-
+    
     // TODO: fix temp magic number 80
-    if(StrMatch(command, "", 80)) // TODO: fix seg fault on entry "bg "
+    if(StrMatch(command, "", 80))
     {
        printf("error: please provide a command\n");
        return;
     }
+    
     char *list[] = {args[2], NULL}; // rest of the arguments
 
-    // create background process
-    pid_t pid = execvp(command, list);
-    printf("execvp() = %d", pid);
+    //printf("execvp() = %d", pid);
     
     pid_t pid_fork = fork(); // create child process
-    if(pid < 0) // fork failed
+    if(pid_fork < 0) // fork failed
     {
         printf("error: fork failed\n");
         return;
     }
 
-    if(pid != 0) // parent process
+    if(pid_fork != 0) // parent proces
     {
         // might use different arguments later
         waitpid(-1, NULL, WNOHANG); // wait for child to terminate
     }
 
-    head = AddFront(head, pid); // where should this go?
+    // child process
+    if(pid_fork == 0)
+    {
+        // create background process
+        pid_t pid = execvp(command, list);
+    }
+
+    head = AddFront(head, pid_fork); // where should this go?
     
 }
 
