@@ -16,15 +16,13 @@ void bg(struct node *head, char *args[]) // TODO: pass other arguments the user 
     char *command = args[1]; // token after 'bg'
     
     // TODO: fix temp magic number 80
-    if(StrMatch(command, "", 80))
+    if(StrMatch(command, "", 80)) // if no command
     {
-       printf("error: please provide a command\n");
+       printf("please provide an executable or command\n");
        return;
     }
     
     char *list[] = {args[2], NULL}; // rest of the arguments
-
-    //printf("execvp() = %d", pid);
     
     pid_t pid_fork = fork(); // create child process
     if(pid_fork < 0) // fork failed
@@ -32,18 +30,17 @@ void bg(struct node *head, char *args[]) // TODO: pass other arguments the user 
         printf("error: fork failed\n");
         return;
     }
-
-    if(pid_fork != 0) // parent proces
+    
+    if(pid_fork == 0) // child process
+    {
+        // execute background command
+        pid_t pid = execvp(command, list);
+    }
+    else // parent process
     {
         // might use different arguments later
-        waitpid(-1, NULL, WNOHANG); // wait for child to terminate
-    }
-
-    // child process
-    if(pid_fork == 0)
-    {
-        // create background process
-        pid_t pid = execvp(command, list);
+        //waitpid(-1, NULL, WNOHANG); // wait for child to terminate
+        wait(NULL);
     }
 
     head = AddFront(head, pid_fork); // where should this go?

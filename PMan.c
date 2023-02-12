@@ -104,7 +104,7 @@ int main()
 		else
 		{   
             // not a known command, empty string, spance, or newline
-            printf("%s: command not recognized.\n", tokenList[0]);
+            printf("%s: command not found\n", tokenList[0]);
 		}
 
 		
