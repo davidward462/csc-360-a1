@@ -3,7 +3,8 @@
 
 struct node
 {
-    pid_t pid;
+    pid_t pid;  // process id number
+    long state; // process state
     struct node *next;
 };
 
