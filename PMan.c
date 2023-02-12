@@ -64,7 +64,6 @@ int main()
 			tokenList[tokenCount++] = token; // store in list
 		}
 
-
         PrintCharArray(tokenList, MAX_TOKENS); 
 
 		// check command

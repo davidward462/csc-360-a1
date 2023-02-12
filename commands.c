@@ -22,25 +22,24 @@ void bg(struct node *head, char *args[]) // TODO: pass other arguments the user 
        return;
     }
     
-    char *list[] = {args[2], NULL}; // rest of the arguments
+    char *list[] = {args[2], args[3], args[4], NULL}; // rest of the arguments
     
     pid_t pid_fork = fork(); // create child process
     if(pid_fork < 0) // fork failed
     {
         printf("error: fork failed\n");
         return;
-    }
-    
-    if(pid_fork == 0) // child process
+    }   
+    else if(pid_fork == 0) // child process
     {
         // execute background command
-        pid_t pid = execvp(command, list);
+        execvp(command, list);
     }
     else // parent process
     {
         // might use different arguments later
-        //waitpid(-1, NULL, WNOHANG); // wait for child to terminate
-        wait(NULL);
+        waitpid(-1, NULL, 0); // wait for child to terminate
+        //wait(NULL);
     }
 
     head = AddFront(head, pid_fork); // where should this go?
