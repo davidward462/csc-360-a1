@@ -1,4 +1,4 @@
-#include <stdio.h>
+    #include <stdio.h>
 #include <sys/wait.h>
 #include <unistd.h>             
 #include <stdlib.h>
@@ -31,9 +31,10 @@ void bg(struct node *head, char *args[]) // TODO: pass other arguments the user 
         return;
     }   
     else if(pid_fork == 0) // child process
-    {
+    {   
         // execute background command
         execvp(command, list);
+        exit();
     }
     else // parent process
     {
