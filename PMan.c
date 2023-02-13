@@ -84,7 +84,7 @@ int main()
 		}
 		else if(StrMatch(tokenList[0], str_bgkill, MAX_CMD_LEN)) // bgkill
 		{
-			bgkill();
+			bgkill(head, tokenList);
 		}
 		else if(StrMatch(tokenList[0], str_bgstop, MAX_CMD_LEN)) // bgstop
 		{

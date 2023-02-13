@@ -3,6 +3,8 @@
 #include <unistd.h>             
 #include <stdlib.h>
 #include <sys/types.h>
+#include <signal.h>
+
 #include "linkedlist.h"
 #include "helper.h"
 #include "commands.h"
@@ -35,13 +37,18 @@ void bg(struct node *head, char *args[]) // TODO: pass other arguments the user 
     else if(pid_fork == 0) // child process, child gets pid of 0 from fork()
     {   
         // execute background command
-        execvp(command, list);
-        head = AddFront(head, pid_fork); // where should this go?
+        if(execvp(command, list) < 0)
+        {
+            printf("execution of %s failed\n", command);
+            exit(-1);
+        }
         //printf("child process:");
         //PrintList(head);
     }
     else // parent process, parent gets child's pid as pid from fork()
     {
+        head = AddFront(head, pid_fork); // where should this go?
+        PrintList(head); // for debugging
         // might use different arguments later
         waitpid(pid_fork, &status, WUNTRACED); // wait for child to terminate
         //wait(NULL);
@@ -57,9 +64,11 @@ void bglist(struct node *head)
 } 
 
 // bgkill
-void bgkill()
-{
+void bgkill(struct node *head, char *args[])
+{   
+    pid_t pid;
 	printf("\trun bgkill\n");
+    kill(pid, SIGTERM);
 }
 
 // bgstop

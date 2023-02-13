@@ -7,7 +7,7 @@ void bg(struct node *head, char *args[]);
 
 void bglist(struct node *head);
 
-void bgkill();
+void bgkill(struct node *head, char *args[]);
 
 void bgstop();
 
