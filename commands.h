@@ -1,7 +1,7 @@
 #ifndef COMMANDS_H
 #define COMMANDS_H
 
-struct node *head;
+//struct node *head;
 
 void bg(struct node *head, char *args[]);
 
