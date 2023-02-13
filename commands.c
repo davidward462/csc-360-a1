@@ -25,34 +25,30 @@ void bg(struct node *head, char *args[]) // TODO: pass other arguments the user 
     }
     
     char *list[] = {args[2], args[3], args[4], NULL}; // rest of the arguments
-    
-    int status; // for waitpid
 
     pid_t pid_fork = fork(); // create child process
-    if(pid_fork < 0) // fork failed
+
+	// fork failed
+    if(pid_fork < 0)
     {
         printf("error: fork failed\n");
         return;
     }   
-    else if(pid_fork == 0) // child process, child gets pid of 0 from fork()
+    else if(pid_fork == 0) // child process created, child gets pid of 0 from fork()
     {   
-        // execute background command
+        // execute command
         if(execvp(command, list) < 0)
         {
             printf("execution of %s failed\n", command);
             exit(1);
         }
-        //printf("child process:");
-        //PrintList(head);
     }
-    else // parent process, parent gets child's pid as pid from fork()
+    else // pid > 0, parent process, parent gets child's pid as pid from fork()
     {
-        head = AddFront(head, pid_fork); // where should this go?
-        //PrintList(head); // for debugging
-        printf("pid: %d\n", pid_fork);
-        // might use different arguments later
-        waitpid(-1, &status, WNOHANG); // wait for child to terminate
-        //wait(&status);
+        // add child process to list
+        head = AddFront(head, pid_fork);
+        printf("running child %d\n", pid_fork);
+        sleep(1);
     }
 }
 

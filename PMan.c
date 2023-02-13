@@ -65,7 +65,7 @@ int main()
 			tokenList[tokenCount++] = token; // store in list
 		}
 
-        //PrintCharArray(tokenList, MAX_TOKENS); 
+		MonitorChildProcess(); // waitpid is called continuously here
 
 		// check command
 		if(StrMatch(tokenList[0], str_exit, MAX_CMD_LEN))

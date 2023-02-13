@@ -1,7 +1,9 @@
 #include <stdio.h>
 #include <string.h>
 #include <sys/types.h>
+#include <sys/wait.h>
 #include <unistd.h>
+
 #include "helper.h"
 
 void run()
@@ -32,4 +34,17 @@ int StrMatch(char *a, const char *b, int length)
     {
         return 0;
     }
+}
+
+void MonitorChildProcess()
+{
+	int status;
+	while(1)
+	{
+		pid_t pid = waitpid(-1, &status, WNOHANG);
+		if(pid <= 0)
+		{
+			break;
+		}
+	}
 }
