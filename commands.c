@@ -13,7 +13,7 @@ struct node *head;
 
 // bg
 // Create background process
-void bg(struct node *head, char *args[]) // TODO: pass other arguments the user may have entered
+struct node* bg(struct node *head, char *args[]) // TODO: pass other arguments the user may have entered
 {
     char *command = args[1]; // token after 'bg'
     
@@ -21,7 +21,7 @@ void bg(struct node *head, char *args[]) // TODO: pass other arguments the user 
     if(StrMatch(command, "", 80)) // if no command
     {
        printf("please provide an executable or command\n");
-       return;
+       return head;
     }
     
     char *list[] = {args[2], args[3], args[4], NULL}; // rest of the arguments
@@ -32,7 +32,7 @@ void bg(struct node *head, char *args[]) // TODO: pass other arguments the user 
     if(pid_fork < 0)
     {
         printf("error: fork failed\n");
-        return;
+        return head;
     }   
     else if(pid_fork == 0) // child process created, child gets pid of 0 from fork()
     {   
@@ -47,9 +47,10 @@ void bg(struct node *head, char *args[]) // TODO: pass other arguments the user 
     {
         // add child process to list
         head = AddFront(head, pid_fork);
-        printf("running child %d\n", pid_fork);
+        DetailPrintList(head); // for testing
         sleep(1);
     }
+    return head;
 }
 
 // bglist

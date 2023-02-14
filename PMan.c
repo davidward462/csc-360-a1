@@ -39,14 +39,10 @@ int main()
 	const char *str_pstat = "pstat";
 	const char *str_exit = "exit";
 
-    // root process for pman
-    pid_t pmanPid = getpid();
-    
-    // create linked list to hold process IDs
+    // create linked list to hold background process IDs
     struct node *head;
     head = CreateEmptyList();
-    //head = AddFront(head, pmanPid); // add root process
-    //PrintList(head); // initial print
+    // don't need to record the parent's pid
 
     // Main loop
 	while(1)
@@ -65,7 +61,7 @@ int main()
 			tokenList[tokenCount++] = token; // store in list
 		}
 
-		MonitorChildProcess(); // waitpid is called continuously here
+		MonitorChildProcess(); // waitpid is continuously by the parent here
 
 		// check command
 		if(StrMatch(tokenList[0], str_exit, MAX_CMD_LEN))
@@ -75,8 +71,7 @@ int main()
 		}
 		else if(StrMatch(tokenList[0], str_bg, MAX_CMD_LEN)) // bg
 		{
-			bg(head, tokenList);
-            //run();
+			 head = bg(head, tokenList);
 		}
 		else if(StrMatch(tokenList[0], str_bglist, MAX_CMD_LEN)) // bglist
 		{

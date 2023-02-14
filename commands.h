@@ -3,7 +3,7 @@
 
 //struct node *head;
 
-void bg(struct node *head, char *args[]);
+struct node* bg(struct node *head, char *args[]);
 
 void bglist(struct node *head);
 
