@@ -96,14 +96,17 @@ struct node* RemoveNode(struct node *head, pid_t pid)
     pid_t pidCurr;
     struct node *current = head;
     struct node *prev = head;
+    struct node *p = head; // to use in free()
 
     while(current != NULL)
     {
         pidCurr = current->pid; // get pid
         if(pidCurr == pid) // if found
         {
+            p = current;
             prev->next = current->next; // rewire
-            free(current);
+            free(p);
+            return head;
         }
         prev = current;
         current = current->next;
