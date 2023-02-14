@@ -68,27 +68,37 @@ void bglist(struct node *head)
 } 
 
 // bgkill
-void bgkill(struct node *head, char *args[])
+void bgkill(struct node *head, pid_t pid)
 {   
-    pid_t pid;
-	printf("\trun bgkill\n");
-    kill(pid, SIGTERM);
+    //pid_t pid = atoi(args[1]);
+    RemoveNode(head, pid);
+    kill(pid, SIGTERM); // TODO: make this kill the pid that is passed
 }
 
 // bgstop
 void bgstop()
 {
-	printf("\trun bgstop\n");
 }
 
 // bgstart
 void bgstart()
 {
-	printf("\trun bgstart\n");
 }
 
 // pstat
 void pstat()
 {
-	printf("\trun pstat\n");
+}
+
+void killall(struct node *head)
+{
+    // kill all processes in list
+    pid_t pid;
+    struct node *current = head;
+    while(current != NULL)
+    {
+        pid = current->pid;
+        kill(pid, SIGTERM);
+    }
+
 }

@@ -20,6 +20,6 @@ struct node* CreateEmptyList();
 
 struct node* AddFront(struct node *head, pid_t pid);
 
-struct node RemoveNode(pid_t pid);
+struct node* RemoveNode(struct node *head, pid_t pid);
 
 #endif

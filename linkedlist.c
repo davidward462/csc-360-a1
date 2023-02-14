@@ -91,3 +91,22 @@ struct node* AddFront(struct node *head, pid_t pid)
     return head; // head of list is updated
 }
 
+struct node* RemoveNode(struct node *head, pid_t pid)
+{
+    pid_t pidCurr;
+    struct node *current = head;
+    struct node *prev = head;
+
+    while(current != NULL)
+    {
+        pidCurr = current->pid; // get pid
+        if(pidCurr == pid) // if found
+        {
+            prev->next = current->next; // rewire
+            free(current);
+        }
+	}
+            
+    return head;
+}
+

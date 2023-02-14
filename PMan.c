@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <sys/wait.h>
 #include <unistd.h>             
-#include <stdlib.h>             //exit(), etc 
+#include <stdlib.h>             //Exit(), etc 
 #include <string.h>             // strok(), etc
 #include <readline/readline.h>  // getting user input
 #include <sys/types.h>
@@ -67,6 +67,7 @@ int main()
 		if(StrMatch(tokenList[0], str_exit, MAX_CMD_LEN))
 		{
             free(input);
+            killall(head);
 			exit(EXIT_SUCCESS);	
 		}
 		else if(StrMatch(tokenList[0], str_bg, MAX_CMD_LEN)) // bg
@@ -79,7 +80,7 @@ int main()
 		}
 		else if(StrMatch(tokenList[0], str_bgkill, MAX_CMD_LEN)) // bgkill
 		{
-			bgkill(head, tokenList);
+			bgkill(head, atoi(tokenList[1]));
 		}
 		else if(StrMatch(tokenList[0], str_bgstop, MAX_CMD_LEN)) // bgstop
 		{
