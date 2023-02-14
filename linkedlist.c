@@ -38,7 +38,7 @@ void DetailPrintList(struct node *head)
     struct node *current = head;
     while(current != NULL) // while we have not finished the list
     {
-        printf("%d: ", current->pid);
+        printf("%d: \n", current->pid);
         current = current->next;
     }
 
@@ -105,6 +105,8 @@ struct node* RemoveNode(struct node *head, pid_t pid)
             prev->next = current->next; // rewire
             free(current);
         }
+        prev = current;
+        current = current->next;
 	}
             
     return head;

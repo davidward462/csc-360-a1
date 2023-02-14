@@ -63,8 +63,9 @@ void bglist(struct node *head)
         return;
     }
 
+    DetailPrintList(head); // main print
+
     printf("Total background jobs: %d\n", listLen);
-    DetailPrintList(head);
 } 
 
 // bgkill
@@ -98,7 +99,9 @@ void killall(struct node *head)
     while(current != NULL)
     {
         pid = current->pid;
+        printf("pid: %d\n", pid);
         kill(pid, SIGTERM);
+        current = current->next;
     }
 
 }
