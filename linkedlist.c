@@ -3,25 +3,46 @@
 #include <sys/types.h>
 #include "linkedlist.h"
 
+// return the number of nodes in a linked list pointed to by head
 int ListLength(struct node *head)
 {
-    return 0;
+    struct node *current = head;
+    int count = 0;
+    while(current != NULL)
+    {
+        count++;
+        current = current->next;
+    }
+    return count;
 }
 
 void PrintList(struct node *head)
 {
     printf("head-> ");
     struct node *current = head; // address of current node
-    while(current !=NULL) // there are other nodes in the list
+    while(current !=NULL) // while we have not finished the list
     {
         printf("%d-> ", current->pid);
         current = current->next; // increment
     }
 
-    if(current == NULL)
+    if(current == NULL) // end of list
     {
         printf("NULL\n");
     }
+}
+
+// this will produce most of the output for bglist
+void DetailPrintList(struct node *head)
+{
+    struct node *current = head;
+    while(current != NULL) // while we have not finished the list
+    {
+        printf("%d: ", current->pid);
+        current = current->next;
+    }
+
+    // if current is NULL, we are done
 }
 
 // create linked list with one node

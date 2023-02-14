@@ -55,9 +55,15 @@ void bg(struct node *head, char *args[]) // TODO: pass other arguments the user 
 // bglist
 void bglist(struct node *head)
 {
-    // temporary
-    PrintList(head);
-    //struct node *current = head;
+    // check length
+    int listLen = ListLength(head); 
+    if(listLen == 0){
+        printf("There are no background jobs\n");
+        return;
+    }
+
+    printf("Total background jobs: %d\n", listLen);
+    DetailPrintList(head);
 } 
 
 // bgkill

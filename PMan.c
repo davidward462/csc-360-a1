@@ -45,7 +45,7 @@ int main()
     // create linked list to hold process IDs
     struct node *head;
     head = CreateEmptyList();
-    head = AddFront(head, pmanPid); // add root process
+    //head = AddFront(head, pmanPid); // add root process
     //PrintList(head); // initial print
 
     // Main loop

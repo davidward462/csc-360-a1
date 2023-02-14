@@ -3,13 +3,11 @@
 
 int main()
 {
-    int run = 1;
     int count = 0;
-    while(run)
+    int maxTime = 60;
+    while(count < maxTime)
     {
-        if(count == 10) {
-            count = 0;
-        }
         count++;
+        sleep(1);
     }
 }
